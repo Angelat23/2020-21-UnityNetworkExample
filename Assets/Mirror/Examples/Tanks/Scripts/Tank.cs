@@ -11,6 +11,7 @@ namespace Mirror.Examples.Tanks
 
         [Header("Movement")]
         public float rotationSpeed = 100;
+        public float moveSpeed = 10;
 
         [Header("Firing")]
         public KeyCode shootKey = KeyCode.Space;
@@ -57,7 +58,7 @@ namespace Mirror.Examples.Tanks
 
             // move
             float vertical = Input.GetAxis("Vertical");
-            Vector3 forward = transform.TransformDirection(Vector3.forward);
+            Vector3 forward = transform.TransformDirection(Vector3.forward)*moveSpeed;
             agent.velocity = forward * Mathf.Max(vertical, 0) * agent.speed;
             animator.SetBool("Moving", agent.velocity != Vector3.zero);
 
